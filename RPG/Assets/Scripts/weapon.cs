@@ -53,9 +53,6 @@ public class weapon : Collidable
             };
                 
             coll.SendMessage("ReceiveDamage", dmg);
-            Debug.Log(coll.name);
-
-          
         }
         
     }

@@ -11,9 +11,10 @@ public class GameManager : MonoBehaviour
     {
         if(GameManager.instance != null)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return;
         }
+
         instance = this;
         SceneManager.sceneLoaded += LoadState;
         DontDestroyOnLoad(gameObject);
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         string s = "";
 
+        // 0|11head|12xp|0
         s = "0" + "|";
         s += head.ToString() + "|";
         s += xp.ToString() + "|";
@@ -67,5 +69,7 @@ public class GameManager : MonoBehaviour
         head = int.Parse(data[1]);
         xp = int.Parse(data[2]);
         //Change weapon level
+
+        instance = this;
     }
 }

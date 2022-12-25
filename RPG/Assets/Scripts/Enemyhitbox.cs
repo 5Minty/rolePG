@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemyhitbox : Collidable
@@ -13,7 +11,7 @@ public class Enemyhitbox : Collidable
             damage dmg = new damage
             {
                 damageAmount = damagePt,
-                origin = GameManager.instance.player.transform.position,
+                origin = transform.position,
                 pushForce = pushForce
             };
 

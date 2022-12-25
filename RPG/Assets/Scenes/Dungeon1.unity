@@ -854,6 +854,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &577216262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 577216264}
+  - component: {fileID: 577216263}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &577216263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577216262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54282d613d9b53b459bbddec3fce2556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSprites: []
+  weaponSprites: []
+  weaponPrices: 
+  xpTable: 
+  player: {fileID: 751542923}
+  floatingTextManager: {fileID: 0}
+  head: 0
+  xp: 0
+--- !u!4 &577216264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577216262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5082096, y: 0.9223635, z: -0.041990966}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &751542922
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5104b2b913857b489c13a315508f907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 10
+  maxHp: 10
+  pushRecoverySpeed: 0.2
+  immuneT: 1
+  lastImmune: 0
 --- !u!212 &751542924
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1135,6 +1192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5104b2b913857b489c13a315508f907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 10
+  maxHp: 10
+  pushRecoverySpeed: 0.2
+  immuneT: 1
+  lastImmune: 0
 --- !u!212 &1620808346
 SpriteRenderer:
   m_ObjectHideFlags: 0
