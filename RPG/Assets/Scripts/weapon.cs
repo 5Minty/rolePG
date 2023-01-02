@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weapon : Collidable
+public class Weapon : Collidable
 {
     //Damage struct
     public int damagePt = 1;
@@ -47,7 +47,7 @@ public class weapon : Collidable
                 return;
 
             //New damage object that we'll send to fighter that we hit
-            damage dmg = new damage
+            Damage dmg = new Damage
             {
                 damageAmount = damagePt,
                 origin = transform.position,

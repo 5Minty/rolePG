@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class mover : Fighter
+public abstract class Mover : Fighter
 {
     protected BoxCollider2D boxCollider;
 

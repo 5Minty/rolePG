@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player1 : mover
+public class Player1 : Mover
 {
     private void FixedUpdate()
     {

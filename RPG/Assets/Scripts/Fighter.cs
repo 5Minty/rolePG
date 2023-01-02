@@ -16,7 +16,7 @@ public class Fighter : MonoBehaviour
     protected Vector3 pushDirection;
 
     //All fighters can ReceiveDamage / Die
-    protected virtual void ReceiveDamage(damage dmg)
+    protected virtual void ReceiveDamage(Damage dmg)
     {
         if(Time.time - lastImmune > immuneT)
         {

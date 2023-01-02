@@ -8,7 +8,7 @@ public class Enemyhitbox : Collidable
     protected override void OnCollide(Collider2D coll)
     {
         if (coll.name == "Player") {
-            damage dmg = new damage
+            Damage dmg = new Damage
             {
                 damageAmount = damagePt,
                 origin = transform.position,

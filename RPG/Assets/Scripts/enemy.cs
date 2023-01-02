@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : mover
+public class Enemy : Mover
 {
     public int xpVal = 1;
     public float triggerLength = 1;
