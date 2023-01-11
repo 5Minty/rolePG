@@ -12,6 +12,7 @@ public class Chest : Collectable
         {
             collected = true;
             GameManager.instance.ShowText("+" + headAmount + " head!", 25, Color.yellow, transform.position, Vector3.up * 50, 2.0f);
+            GameManager.instance.head += headAmount;
             Debug.Log("Give " + headAmount + " head");
 
         }

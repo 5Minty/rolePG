@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     {
         if(GameManager.instance != null)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
 
@@ -28,13 +28,82 @@ public class GameManager : MonoBehaviour
 
     //References
     public Player1 player;
-    //public Weapon weapon
+    public Weapon weapon;
+
+    public bool TryWeaponUpgrade()
+    {
+        if(weaponPrices.Count<= weapon.weaponLvl)
+        {
+            return false;
+        }
+
+        if (weaponPrices[weapon.weaponLvl]<= head)
+        {
+            weapon.UpgradeWeapon();
+            return true;
+        }
+
+        return false;
+    }
+
+    private void Update()
+    {
+        GetCurrentLvl();
+    }
+
+    public int GetCurrentLvl()
+    {
+        int r = 0;
+        int add = 0;
+
+        while(xp >= add)
+        {
+            add += xpTable[r];
+            r++;
+            if(r == xpTable.Count)
+            {
+                return r;
+            }
+        }
+
+        return r;
+    }
+
+    public int GetReqXp(int lvl)
+    {
+        int r = 0;
+        int xp = 0;
+
+        while(r < lvl)
+        {
+            xp += xpTable[r];
+            r++;
+        }
+        return xp;
+    }
 
     public FloatingTextManager floatingTextManager;
 
     //Logic
     public int head;
     public int xp;
+
+    public void GrantXp(int experience)
+    {
+        int currLvl = GetCurrentLvl();
+        xp += experience;
+
+        if(currLvl < GetCurrentLvl())
+        {
+            OnLevelUp();
+            player.OnLevelUp();
+        }
+        
+    }
+    public void OnLevelUp()
+    {
+        Debug.Log("LEVEL UP!");
+    }
 
     //Floating text
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
@@ -51,7 +120,7 @@ public class GameManager : MonoBehaviour
         s = "0" + "|";
         s += head.ToString() + "|";
         s += xp.ToString() + "|";
-        s += "0";
+        s += weapon.weaponLvl.ToString();
 
         PlayerPrefs.SetString("SaveState", s);
     }
@@ -68,7 +137,11 @@ public class GameManager : MonoBehaviour
         //Change player skin
         head = int.Parse(data[1]);
         xp = int.Parse(data[2]);
+        if(GetCurrentLvl() != 1)
+            player.SetLevel(GetCurrentLvl());
         //Change weapon level
+        
+        weapon.SetWeaponLevel(int.Parse(data[3])); //converts string to int
 
         instance = this;
     }

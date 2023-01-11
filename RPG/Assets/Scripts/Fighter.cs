@@ -8,6 +8,19 @@ public class Fighter : MonoBehaviour
     public int maxHp = 10;
     public float pushRecoverySpeed = .2f;
 
+    public void OnLevelUp()
+    {
+        maxHp++;
+        hp = maxHp;
+    }
+
+    public void SetLevel(int level)
+    {
+        for (int i = 0; i < level; i++)
+        {
+            OnLevelUp();
+        }
+    }
     //Immunity
     public float immuneT = 1.0f;
     public float lastImmune;
@@ -37,6 +50,6 @@ public class Fighter : MonoBehaviour
 
     protected virtual void Death()
     {
-
+        
     }
 }
