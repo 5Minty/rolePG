@@ -6,7 +6,7 @@ public class Enemy : Mover
 {
     public int xpVal = 1;
     public float triggerLength = 1;
-    public float chaseL = 5;
+    public float chaseL = 5f;
     private bool chasing;
     private bool collidingWithPlayer;
     private Transform playerTransform;
@@ -23,6 +23,7 @@ public class Enemy : Mover
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
         hitbox = transform.GetChild(0).GetComponent<BoxCollider2D>();
+        chasing = false;
 
     }
 
@@ -31,8 +32,9 @@ public class Enemy : Mover
         //Is the player in range?
         if(Vector3.Distance(playerTransform.position, startingPosition) < chaseL)
         {
-            if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
+            if (!chasing && Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
                 chasing = true;
+
             if (chasing)
             {
                 if (!collidingWithPlayer)
@@ -61,7 +63,7 @@ public class Enemy : Mover
                 continue;
             }
 
-            if (hits[i].tag == "Figther" && hits[i].name == "Player")
+            if (hits[i].tag == "Fighter" && hits[i].name == "Player")
             {
                 collidingWithPlayer = true;
             }

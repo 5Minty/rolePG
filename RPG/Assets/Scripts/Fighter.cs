@@ -10,16 +10,13 @@ public class Fighter : MonoBehaviour
 
     public void OnLevelUp()
     {
-        maxHp++;
+        maxHp = GameManager.instance.GetCurrentLvl() + 10;
         hp = maxHp;
     }
 
     public void SetLevel(int level)
     {
-        for (int i = 1; i < level; i++)
-        {
-            OnLevelUp();
-        }
+        OnLevelUp();
     }
     //Immunity
     public float immuneT = 1.0f;
