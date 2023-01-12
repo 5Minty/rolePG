@@ -16,7 +16,7 @@ public class Fighter : MonoBehaviour
 
     public void SetLevel(int level)
     {
-        for (int i = 0; i < level; i++)
+        for (int i = 1; i < level; i++)
         {
             OnLevelUp();
         }

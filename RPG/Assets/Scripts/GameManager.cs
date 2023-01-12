@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
     public void OnLevelUp()
     {
         Debug.Log("LEVEL UP!");
+        ShowText("LEVEL UP", 30, Color.yellow, player.transform.position, Vector3.one, 2.0f);
     }
 
     //Floating text
@@ -138,11 +139,16 @@ public class GameManager : MonoBehaviour
         head = int.Parse(data[1]);
         xp = int.Parse(data[2]);
         if(GetCurrentLvl() != 1)
+        {
             player.SetLevel(GetCurrentLvl());
+        }
+            
         //Change weapon level
         
         weapon.SetWeaponLevel(int.Parse(data[3])); //converts string to int
 
         instance = this;
+
+        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
     }
 }

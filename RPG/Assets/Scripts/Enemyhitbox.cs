@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemyhitbox : Collidable
+public class EnemyHitBox : Collidable
 {
     public int damagePt = 1;
     public float pushForce = 5f;

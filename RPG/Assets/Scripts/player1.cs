@@ -10,6 +10,8 @@ public class Player1 : Mover
     {
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void FixedUpdate()
