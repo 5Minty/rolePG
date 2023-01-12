@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FloatingTextManager : MonoBehaviour
@@ -8,7 +11,12 @@ public class FloatingTextManager : MonoBehaviour
     public GameObject textContainer;
     public GameObject textPrefab;
 
-    private List<FloatingText> floatingTexts = new List<FloatingText>();
+    private List<FloatingText> floatingTexts;
+
+    private void Start()
+    {
+        floatingTexts = new List<FloatingText>();
+    }
 
     private void Update()
     {

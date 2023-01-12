@@ -10,6 +10,12 @@ public class Player1 : Mover
     {
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        var objs = FindObjectsOfType(typeof(Player1));
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
 
         DontDestroyOnLoad(gameObject);
     }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Enemy : Mover
+public class RangedEnemy : Mover
 {
     public int xpVal = 1;
     public float triggerLength = 1;
-    public float chaseL = 5f;
-    private bool chasing;
+    public float shootRadius = 5f;
+    private bool shooting;
     private bool collidingWithPlayer;
     private Transform playerTransform;
     private Vector3 startingPosition;
@@ -24,19 +24,18 @@ public class Enemy : Mover
         playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
         hitbox = transform.GetChild(0).GetComponent<BoxCollider2D>();
-        chasing = false;
-
+        shooting = false;
     }
 
     private void FixedUpdate()
     {
-        //Is the player in range?
-        if (Vector3.Distance(playerTransform.position, startingPosition) < chaseL)
+        // Is the player in range to shoot?
+        if (Vector3.Distance(playerTransform.position, startingPosition) < shootRadius)
         {
-            if (!chasing && Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
-                chasing = true;
+            if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
+                shooting = true;
 
-            if (chasing)
+            if (shooting)
             {
                 if (!collidingWithPlayer)
                 {
@@ -51,10 +50,10 @@ public class Enemy : Mover
         else
         {
             UpdateMotor(startingPosition - transform.position);
-            chasing = false;
+            shooting = false;
         }
 
-        //check for overlaps
+        // Check for overlaps
         collidingWithPlayer = false;
         boxCollider.OverlapCollider(filter, hits);
         for (int i = 0; i < hits.Length; i++)

@@ -6,19 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public FloatingTextManager floatingTextManager;
 
-    private void Awake()
-    {
-        if(GameManager.instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        SceneManager.sceneLoaded += LoadState;
-        DontDestroyOnLoad(gameObject);
-    }
+    //Logic
+    public int head;
+    public int xp;
 
     //Resources
     public List<Sprite> playerSprites;
@@ -29,6 +21,24 @@ public class GameManager : MonoBehaviour
     //References
     public Player1 player;
     public Weapon weapon;
+
+    private void Awake()
+    {
+        if (GameManager.instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        SceneManager.sceneLoaded += LoadState;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        GetCurrentLvl();
+    }
 
     public bool TryWeaponUpgrade()
     {
@@ -44,11 +54,6 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
-    }
-
-    private void Update()
-    {
-        GetCurrentLvl();
     }
 
     public int GetCurrentLvl()
@@ -81,12 +86,6 @@ public class GameManager : MonoBehaviour
         }
         return xp;
     }
-
-    public FloatingTextManager floatingTextManager;
-
-    //Logic
-    public int head;
-    public int xp;
 
     public void GrantXp(int experience)
     {
@@ -125,6 +124,7 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetString("SaveState", s);
     }
+
     public void LoadState(Scene s, LoadSceneMode mode)
     {
         //SceneManager.sceneLoaded -= LoadState;
